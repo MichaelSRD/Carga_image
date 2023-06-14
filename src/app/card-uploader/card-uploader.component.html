@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="card"  [ngStyle]="{'display':progress > 0?'none':''}">
+        <p>Upload your image</p>
+        <p class="text2">File should be. Jpeg, png...</p>
+        
+        <div draggable="true" ngClass="{{dragAreaClass}}">
+                <div class="img">
+                    <svg [ngStyle]="{'display':objectURL?'none':''}" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="48" y="80" width="416" height="352" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><circle cx="336" cy="176" r="32" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path d="M304 335.79l-90.66-90.49a32 32 0 00-43.87-1.3L48 352M224 432l123.34-123.34a32 32 0 0143.11-2L464 368" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                     <p [ngStyle]="{'display':objectURL?'none':''}"> Drog & grop your image here</p>
+                    <input type="file"
+                           #file
+                           [multiple]="false"
+                           (change)="onFileChange($event)"
+                           style="display:none" />
+                           <img [src]="objectURL" alt="" [ngStyle]="{'display':objectURL?'':'none'}">
+                </div>
+               
+            </div>
+            <div class="error" *ngIf="error">
+                Only one file at time allow
+            </div>
+        <p class="or">or</p>
+        <div class="file-select" id="src-file1">
+            <input type="file" (change)="onFileChange($event)" name="src-file1" aria-label="Archivo">
+            
+        </div>
+        
+
+
+    </div>
+    <div class="carga" *ngIf="progress > 0">
+        <div class="card-progress">
+            <p>Uploading....</p>
+            <mat-progress-bar  mode="buffer" bufferValue=100 [value]="progress"></mat-progress-bar>
+            <p></p>
+        
+        </div>
+    </div>
+
+    <div class="card cards"  [ngStyle]="{'display':progress >= 100?'':'none'}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+        <p>Uploaded Successfully!</p>
+        
+        <div class="image" *ngIf="link" >
+            <img  [src]="link.body.url"  alt="">
+        </div>
+       <div class="link" *ngIf="code"  >
+        <input disabled [value]="code.url" /> <button  [cdkCopyToClipboard]="code.url">Copy Link</button>
+       </div>
+       
+
+        
+        
+        
+
+
+    </div>
+    
+    
+</div>
