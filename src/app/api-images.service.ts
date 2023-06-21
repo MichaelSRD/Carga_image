@@ -10,7 +10,7 @@ export class ApiImagesService {
 
   constructor(private http:HttpClient) { }
 
-  url: string = "http://127.0.0.1:8000/uploadfile"
+  url: string = "https://fastapi-i0h2.onrender.com"
 
   upload(image: File){
     const formdata = new FormData()
