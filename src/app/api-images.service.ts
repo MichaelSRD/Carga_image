@@ -10,11 +10,11 @@ export class ApiImagesService {
 
   constructor(private http:HttpClient) { }
 
-  url: string = "http://127.0.0.1:8000/uploadfile"
-
+  url: string = "https://fastapi-i0h2.onrender.com/cargar"
+  
   upload(image: File){
     const formdata = new FormData()
-    formdata.append('file',image)
+    formdata.append('image',image)
    return this.http.post(this.url, formdata,{reportProgress: true, observe: 'events' })
   }
   

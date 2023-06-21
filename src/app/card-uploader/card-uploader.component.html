@@ -42,7 +42,7 @@
         <p>Uploaded Successfully!</p>
         
         <div class="image" *ngIf="link" >
-            <img  [src]="link.body.url"  alt="">
+            <img  [src]="link.body.url"   alt="">
         </div>
        <div class="link" *ngIf="code"  >
         <input disabled [value]="code.url" /> <button  [cdkCopyToClipboard]="code.url">Copy Link</button>
